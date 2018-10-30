@@ -1,0 +1,52 @@
+.flex-container {
+		  display: flex;
+		  justify-content: center;
+
+		}
+
+		.flex-container > div {
+		  width: auto;
+		  margin: 10px;
+		  text-align: center;
+		  line-height: auto;
+		  font-size: auto;
+
+		}
+
+.carousel-item{
+	width: 1350px;
+	height: 300px;
+}
+
+.btn-primary {
+	background-color: #3bd65f;
+	color: #fff;
+	border-color:#3bd65f;
+}
+.form-control{
+	border-color:#3bd65f;
+}
+
+body{
+  /* The image used */
+  background-image: url("https://i.pinimg.com/originals/8f/9a/cd/8f9acd4bc3ba68dc4406c452e23e2300.jpg") ;
+            /* Full height */
+            height: 100%;
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+.AudiTitle{
+	color:#38AD66;
+	text-shadow: 2px 2px 1px #0C7C27
+}
+
+
+.imgAudiGal{
+	width: 150px;
+	height: 150px;
+	border-radius: 20%;
+	padding: 2%;
+}
