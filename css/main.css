@@ -14,17 +14,17 @@
 		}
 
 .carousel-item{
-	width: 1350px; 
+	width: 1350px;
 	height: 300px;
 }
 
 .btn-primary {
 	background-color: #3bd65f;
 	color: #fff;
-	border-color:#3bd65f; 
+	border-color:#3bd65f;
 }
 .form-control{
-	border-color:#3bd65f; 
+	border-color:#3bd65f;
 }
 
 body{
@@ -39,13 +39,13 @@ body{
         }
 
 .AudiTitle{
-	color:#38AD66;  
+	color:#38AD66;
 	text-shadow: 2px 2px 1px #0C7C27
 }
 
 
 .imgAudiGal{
-	width: 150px; 
+	width: 150px;
 	height: 150px;
 	border-radius: 20%;
 	padding: 2%;
