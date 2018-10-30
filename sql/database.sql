@@ -1,4 +1,4 @@
-CREATE DABTABASE admev;
+CREATE DATABASE admev;
 USE admev;
 
 CREATE TABLE puesto (
