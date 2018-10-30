@@ -45,3 +45,23 @@ CREATE TABLE evento (
     PRIMARY KEY(idEvento),
     FOREIGN KEY(idAuditorioEvento) REFERENCES auditorio(idAuditorio)
 );
+
+CREATE TABLE material (
+    idMaterial INT NOT NULL,
+    descripcionMaterial VARCHAR(100),
+    cantidadMaterial INT NOT NULL,
+    PRIMARY KEY(idMaterial)
+);
+
+CREATE TABLE auditorio_material (
+    idAuditorioMaterial INT NOT NULL,
+    idAuditorioMat INT NOT NULL,
+    idMaterialAudi INT NOT NULL,
+    PRIMARY KEY(idAuditorioMaterial)
+);
+
+CREATE TABLE archivos_solicitud (
+    idArchivosSolicitud INT NOT NULL,
+    idEventoArchivosSol INT NOT NULL,
+    PRIMARY KEY(idArchivosSolicitud)
+);
