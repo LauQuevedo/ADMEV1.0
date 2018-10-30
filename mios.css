@@ -36,5 +36,17 @@ body{
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
-            back
         }
+
+.AudiTitle{
+	color:#38AD66;  
+	text-shadow: 2px 2px 1px #0C7C27
+}
+
+
+.imgAudiGal{
+	width: 150px; 
+	height: 150px;
+	border-radius: 20%;
+	padding: 2%;
+}
