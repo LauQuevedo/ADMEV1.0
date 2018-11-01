@@ -24,17 +24,17 @@ class RepositorioUsuario {
         }
         return $usuario_insertado;
     }
-}
+
     public static function obtenerUsuarioPorCodigo($conexion, $userId) {
         $usuario = null;
 
         if(isset($conexion)) {
             try {
-                include_once 'app/usuario.inc.php';
+                include_once 'app/usuario.php';
 
                 $sql = "SELECT * FROM usuarios WHERE $userId=:userId;";
                 $sentencia = $conexion->prepare($sql);
-                $sentencia->bindParam(':email', userId, PDO::PARAM_STR);
+                //$sentencia->bindParam(':email', userId, PDO::PARAM_STR);
                 $sentencia->execute();
                 $resultado =  $sentencia->fetch();
                 if(!empty($resultado)) {
@@ -49,5 +49,5 @@ class RepositorioUsuario {
         }
         return $usuario;
     }
-
+}
 ?>

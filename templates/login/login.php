@@ -9,18 +9,21 @@ include_once '../../app/redireccion.inc.php';
 if(ControlSesion::sesion_iniciada()) {
     Redireccion::redirigir(SERVIDOR);
 }*/
-
-var_dump($_POST);
 if(isset($_POST['login'])) {
     Conexion::abrirConexion();
-    $validador = new ValidadorLogin($_POST['inputEmail'], $_POST['inputPassword'], Conexion::obtenerConexion());
+    echo "in";
+    $validador = new ValidadorLogin($_POST['inputCodigo'], $_POST['inputPassword'], Conexion::obtenerConexion());
     if($validador->obtenerError() === '' &&
         !is_null($validador->obtenerUsuario())) {
             //ControlSesion::iniciar_sesion($validador->obtenerUsuario()->getId(),
             //        $validador->obtener_usuario()->getNombre());
             Redireccion::redirigir(SERVIDOR);
+            echo "1";
+
         //Iniciar session
     }
+    echo "2";
+
     Conexion::cerrarConexion();
 }
 $titulo = 'Login';
@@ -76,11 +79,11 @@ $titulo = 'Login';
     <div class="flex-container">
        <div class="card-container">
            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-           <img id="profile-img" class="img-circle" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png" style="border-radius: 50%" />
-           <p id="profile-name" class="profile-name-card"></p>
-           <form role="form form-signin" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+            <img id="profile-img" class="img-circle" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png" style="border-radius: 50%" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form role="form form-signin" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
                <span id="reauth-email" class="reauth-email"></span>
-               <input type="text" name="inputEmail" class="form-control" placeholder="Codigo" required autofocus>
+               <input type="text" name="inputCodigo" class="form-control" placeholder="Codigo" required autofocus>
                </br>
                <input type="password" name="inputPassword" class="form-control" placeholder="Contraseña" required>
                <div id="remember" class="checkbox">
@@ -88,11 +91,13 @@ $titulo = 'Login';
                        <input type="checkbox" value="remember-me"> Recordar
                    </label>
                </div>
-               <button class="btn btn-lg btn-block btn-signin btn-primary" type="submit">Sign in</button>
-           </form><!-- /form -->
-           <a href="#" class="forgot-password">
+               <button name="login" class="btn btn-lg btn-block btn-signin btn-primary" type="submit">
+                   Sign in
+               </button>
+            </form><!-- /form -->
+            <a href="#" class="forgot-password">
                ¿Olvidaste tu contraseña?
-           </a>
+            </a>
        </div>
     </div>
 </body>
