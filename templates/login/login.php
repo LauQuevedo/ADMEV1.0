@@ -3,21 +3,22 @@
 include_once '../../app/config.inc.php';
 include_once '../../app/conexion.inc.php';
 include_once '../../app/login.inc.php';
-
+/*
 if(ControlSesion::sesion_iniciada()) {
     Redireccion::redirigir(SERVIDOR);
-}
+}*/
 
 if(isset($_POST['login'])) {
     Conexion::abrirConexion();
-    $validador = new ValidadorLogin($_POST['email'], $_POST['clave'], Conexion::obtenerConexion());
-
+    $validador = new ValidadorLogin($_POST['userId'], $_POST['userPass'], Conexion::obtenerConexion());
+/*
     if($validador->obtener_error() === '' &&
         !is_null($validador->obtener_usuario())) {
             ControlSesion::iniciar_sesion($validador->obtener_usuario()->getId(),
                     $validador->obtener_usuario()->getNombre());
             Redireccion::redirigir(SERVIDOR);
         //Iniciar session
+        */
     }
     Conexion::cerrarConexion();
 }
