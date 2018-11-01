@@ -1,11 +1,8 @@
 <?php
 
-include_once 'app/config.inc.php';
-include_once 'app/Conexion.inc.php';
-include_once 'app/RepositorioUsuario.inc.php';
-include_once 'app/ValidadorLogin.inc.php';
-include_once 'app/ControlSesion.inc.php';
-include_once 'app/Redireccion.inc.php';
+include_once '../../app/config.inc.php';
+include_once '../../app/conexion.inc.php';
+include_once '../../app/login.inc.php';
 
 if(ControlSesion::sesion_iniciada()) {
     Redireccion::redirigir(SERVIDOR);
