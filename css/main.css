@@ -1,9 +1,7 @@
 .flex-container {
 		  display: flex;
 		  justify-content: center;
-
 		}
-
 		.flex-container > div {
 		  width: auto;
 		  margin: 10px;
@@ -42,7 +40,6 @@ body{
 	color:#38AD66;
 	text-shadow: 2px 2px 1px #0C7C27
 }
-
 
 .imgAudiGal{
 	width: 150px;
