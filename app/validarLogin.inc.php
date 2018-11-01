@@ -9,7 +9,7 @@ class ValidadorLogin {
     function __construct($userId, $clave, $conexion)
     {
         $this->error = "";
-        if(!$this->variable_iniciada($userId) || !$this->variable_iniciada($clave)) {
+        if(!$this->variableIniciada($userId) || !$this->variableIniciada($clave)) {
             $this->usuario = null;
             $this->error = "Debes introducir tu codigo y pass.";
         } else {
@@ -21,7 +21,7 @@ class ValidadorLogin {
         }
     }
 
-    private function variable_iniciada($variable) {
+    private function variableIniciada($variable) {
         return (isset($variable) && !empty($variable));
     }
 
