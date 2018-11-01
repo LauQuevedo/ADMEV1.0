@@ -10,10 +10,10 @@ if(ControlSesion::sesion_iniciada()) {
     Redireccion::redirigir(SERVIDOR);
 }*/
 
+var_dump($_POST);
 if(isset($_POST['login'])) {
     Conexion::abrirConexion();
     $validador = new ValidadorLogin($_POST['inputEmail'], $_POST['inputPassword'], Conexion::obtenerConexion());
-
     if($validador->obtenerError() === '' &&
         !is_null($validador->obtenerUsuario())) {
             //ControlSesion::iniciar_sesion($validador->obtenerUsuario()->getId(),
@@ -78,7 +78,7 @@ $titulo = 'Login';
            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
            <img id="profile-img" class="img-circle" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png" style="border-radius: 50%" />
            <p id="profile-name" class="profile-name-card"></p>
-           <form class="form-signin">
+           <form role="form form-signin" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
                <span id="reauth-email" class="reauth-email"></span>
                <input type="text" name="inputEmail" class="form-control" placeholder="Codigo" required autofocus>
                </br>
