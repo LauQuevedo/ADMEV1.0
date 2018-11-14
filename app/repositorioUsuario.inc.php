@@ -1,7 +1,9 @@
 <?php
 
 class RepositorioUsuario {
-
+    public static function tuGfa() {
+        return "this-gef";
+    }
     public static function insertarUsuario($conexion, $usuario) {
         $usuario_insertado = false;
 
@@ -27,7 +29,6 @@ class RepositorioUsuario {
 
     public static function obtenerUsuarioPorCodigo($conexion, $userId) {
         $usuario = null;
-
         if(isset($conexion)) {
             try {
                 include_once 'app/usuario.php';

@@ -13,9 +13,9 @@ class ValidadorLogin {
             $this->usuario = null;
             $this->error = "Debes introducir tu codigo y pass.";
         } else {
-            echo "obten";
-            $this->usuario = RepositorioUsuario::obtenerUsuarioPorCodigo($conexion, $userId);
-
+            echo "valid";
+            echo RepositorioUsuario::tuGfa();
+            //$this->usuario = RepositorioUsuario::obtenerUsuarioPorCodigo($conexion, $userId);
             if(is_null($this->usuario) || !password_verify($clave, $this->usuario->getPass())) {
                 $this->error = "Datos incorrectos.";
             } else {
