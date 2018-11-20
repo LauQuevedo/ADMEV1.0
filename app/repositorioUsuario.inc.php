@@ -32,7 +32,6 @@ class RepositorioUsuario {
         if(isset($conexion)) {
             try {
                 include_once 'usuario.php';
-
                 $sql = "SELECT * FROM usuario WHERE idUsuario=:userId AND contrasenaUsuario=:clave;";
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->bindParam(':userId', $userId, PDO::PARAM_INT);
@@ -40,7 +39,6 @@ class RepositorioUsuario {
                 $sentencia->execute();
                 $resultado =  $sentencia->fetch();
                 if(!empty($resultado)) {
-                    var_dump($resultado);
                     $usuario = new Usuario($resultado['idUsuario'],
                                             $resultado['nombreUsuario'],
                                             $resultado['contrasenaUsuario'],

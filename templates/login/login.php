@@ -5,6 +5,7 @@ include_once '../../app/conexion.inc.php';
 include_once '../../app/login.inc.php';
 include_once '../../app/validarLogin.inc.php';
 include_once '../../app/redireccion.inc.php';
+include_once '../../app/controlSesion.inc.php';
 /*
 if(ControlSesion::sesion_iniciada()) {
     Redireccion::redirigir(SERVIDOR);
@@ -14,14 +15,11 @@ if(isset($_POST['login'])) {
     $validador = new ValidadorLogin($_POST['inputCodigo'], $_POST['inputPassword'], Conexion::obtenerConexion());
     if($validador->obtenerError() === '' &&
         !is_null($validador->obtenerUsuario())) {
-            //ControlSesion::iniciar_sesion($validador->obtenerUsuario()->getId(),
-            //        $validador->obtener_usuario()->getNombre());
-            //Redireccion::redirigir(SERVIDOR);
-            echo "1";
-
+            ControlSesion::iniciar_sesion($validador->obtenerUsuario()->getId(),
+                $validador->obtenerUsuario()->getNombre());
+            Redireccion::redirigir(SERVIDOR);
         //Iniciar session
     }
-    echo "2";
 
     Conexion::cerrarConexion();
 }
