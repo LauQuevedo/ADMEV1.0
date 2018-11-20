@@ -39,6 +39,7 @@ class RepositorioUsuario {
                 $sentencia->execute();
                 $resultado =  $sentencia->fetch();
                 if(!empty($resultado)) {
+                    var_dump($resultado);
                     $usuario = new Usuario($resultado['idUsuario'],
                                             $resultado['nombreUsuario'],
                                             $resultado['contrasenaUsuario'],

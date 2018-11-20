@@ -11,7 +11,6 @@ if(ControlSesion::sesion_iniciada()) {
 }*/
 if(isset($_POST['login'])) {
     Conexion::abrirConexion();
-    echo "in";
     $validador = new ValidadorLogin($_POST['inputCodigo'], $_POST['inputPassword'], Conexion::obtenerConexion());
     if($validador->obtenerError() === '' &&
         !is_null($validador->obtenerUsuario())) {
@@ -91,6 +90,11 @@ $titulo = 'Login';
                        <input type="checkbox" value="remember-me"> Recordar
                    </label>
                </div>
+               <?php
+                    if(isset($_POST['login'])) {
+                        $validador->mostrarError();
+                    }
+                    ?>
                <button  type="submit" name="login" class="btn btn-lg btn-block btn-signin btn-primary" type="submit" >
                    Sign in
                </button>
