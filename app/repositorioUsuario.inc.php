@@ -27,15 +27,16 @@ class RepositorioUsuario {
         return $usuario_insertado;
     }
 
-    public static function obtenerUsuarioPorCodigo($conexion, $userId) {
+    public static function obtenerUsuarioPorCodigo($conexion, $userId, $clave) {
         $usuario = null;
         if(isset($conexion)) {
             try {
                 include_once 'usuario.php';
 
-                $sql = "SELECT * FROM usuario WHERE idUsuario=:userId;";
+                $sql = "SELECT * FROM usuario WHERE idUsuario=:userId AND contrasenaUsuario=:clave;";
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->bindParam(':userId', $userId, PDO::PARAM_INT);
+                $sentencia->bindParam(':clave', $clave, PDO::PARAM_STR);
                 $sentencia->execute();
                 $resultado =  $sentencia->fetch();
                 if(!empty($resultado)) {
