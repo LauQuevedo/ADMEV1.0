@@ -31,18 +31,18 @@ class RepositorioUsuario {
         $usuario = null;
         if(isset($conexion)) {
             try {
-                include_once 'app/usuario.php';
+                include_once 'usuario.php';
 
-                $sql = "SELECT * FROM usuarios WHERE $userId=:userId;";
+                $sql = "SELECT * FROM usuario WHERE idUsuario=:userId;";
                 $sentencia = $conexion->prepare($sql);
-                //$sentencia->bindParam(':email', userId, PDO::PARAM_STR);
+                $sentencia->bindParam(':userId', $userId, PDO::PARAM_INT);
                 $sentencia->execute();
                 $resultado =  $sentencia->fetch();
                 if(!empty($resultado)) {
-                    $usuario = new Usuario($resultado['id'],
-                                            $resultado['nombre'],
-                                            $resultado['pass'],
-                                            $resultado['puesto']);
+                    $usuario = new Usuario($resultado['idUsuario'],
+                                            $resultado['nombreUsuario'],
+                                            $resultado['contrasenaUsuario'],
+                                            $resultado['idPuestoUsario']);
                 }
             } catch (PDOException $ex) {
                 print 'ERROR'.$ex->getMessage();

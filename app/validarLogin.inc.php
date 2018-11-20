@@ -1,6 +1,6 @@
 <?php
 
-include_once 'app/repositorioUsuario.inc.php';
+include_once 'repositorioUsuario.inc.php';
 
 class ValidadorLogin {
     private $usuario;
@@ -13,13 +13,10 @@ class ValidadorLogin {
             $this->usuario = null;
             $this->error = "Debes introducir tu codigo y pass.";
         } else {
-            echo "valid";
-            echo RepositorioUsuario::tuGfa();
-            //$this->usuario = RepositorioUsuario::obtenerUsuarioPorCodigo($conexion, $userId);
-            if(is_null($this->usuario) || !password_verify($clave, $this->usuario->getPass())) {
+            //echo "dentro";
+            $this->usuario = RepositorioUsuario::obtenerUsuarioPorCodigo($conexion, $userId);
+            if(is_null($this->usuario)) {//} || !password_verify($clave, $this->usuario->getPass())) {
                 $this->error = "Datos incorrectos.";
-            } else {
-                echo "correcto";
             }
         }
     }

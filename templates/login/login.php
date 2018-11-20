@@ -17,7 +17,7 @@ if(isset($_POST['login'])) {
         !is_null($validador->obtenerUsuario())) {
             //ControlSesion::iniciar_sesion($validador->obtenerUsuario()->getId(),
             //        $validador->obtener_usuario()->getNombre());
-            Redireccion::redirigir(SERVIDOR);
+            //Redireccion::redirigir(SERVIDOR);
             echo "1";
 
         //Iniciar session
@@ -81,8 +81,8 @@ $titulo = 'Login';
            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
             <img id="profile-img" class="img-circle" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png" style="border-radius: 50%" />
             <p id="profile-name" class="profile-name-card"></p>
-            <form role="form form-signin" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
-               <span id="reauth-email" class="reauth-email"></span>
+            <form role="form" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+               <!--<span id="reauth-email" class="reauth-email"></span>>-->
                <input type="text" name="inputCodigo" class="form-control" placeholder="Codigo" required autofocus>
                </br>
                <input type="password" name="inputPassword" class="form-control" placeholder="Contraseña" required>
@@ -91,7 +91,7 @@ $titulo = 'Login';
                        <input type="checkbox" value="remember-me"> Recordar
                    </label>
                </div>
-               <button name="login" class="btn btn-lg btn-block btn-signin btn-primary" type="submit">
+               <button  type="submit" name="login" class="btn btn-lg btn-block btn-signin btn-primary" type="submit" >
                    Sign in
                </button>
             </form><!-- /form -->
