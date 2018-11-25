@@ -16,6 +16,16 @@
 	height: 300px;
 }
 
+.table > thead {
+	background-color:#85EE9F;
+	color: #fff;
+}
+
+.table > tbody {
+	background-color:#EAFAF1;
+}
+ 
+
 .btn-primary {
 	background-color: #3bd65f;
 	color: #fff;
