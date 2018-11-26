@@ -11,10 +11,13 @@ CREATE TABLE usuario (
     idUsuario INT NOT NULL,
     nombreUsuario VARCHAR(100),
     contrasenaUsuario VARCHAR(255),
-    idPuestoUsario INT NOT NULL,
+    idPuestoUsuario INT NOT NULL,
     PRIMARY KEY(idUsuario),
-    FOREIGN KEY(idPuestoUsario) REFERENCES puesto(idPuesto)
+    FOREIGN KEY(idPuestoUsuario) REFERENCES puesto(idPuesto)
 );
+
+--ALTER TABLE usuario CHANGE idPuestoUsario IdPuestoUsuario INT(11);
+
 
 CREATE TABLE auditorio (
     idAuditorio INT NOT NULL,
