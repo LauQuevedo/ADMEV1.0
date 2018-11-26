@@ -1,9 +1,6 @@
 <?php
 
 class RepositorioUsuario {
-    public static function tuGfa() {
-        return "this-gef";
-    }
     public static function insertarUsuario($conexion, $usuario) {
         $usuario_insertado = false;
 
