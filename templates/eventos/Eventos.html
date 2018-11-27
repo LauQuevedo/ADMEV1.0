@@ -12,12 +12,12 @@
 
 </head>
 <body>
-<!-- -------------------Barra de navegacion superior ------------------------->
+	<!-- -------------------Barra de navegacion superior ------------------------->
 
 <nav class="navbar navbar-expand-sm navbar-dark bg-success">
   <!-- Brand -->
   <div class="container">
-    <a class="navbar-brand"  href="../landing-page/landing-page.html">ADMEV</a>
+    <a class="navbar-brand"  href="principal.html">ADMEV</a>
     <a class="navbar-brand navbar-right"  href="#">CUCEI</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -26,7 +26,7 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="../login/login.php">Log In</a>
+          <a class="nav-link" href="log-in.html">Log In</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Solicitud</a>
@@ -49,39 +49,42 @@
 </nav>
 <br>
 
-    <div>
+<div class="flex-container">
+	 <div class="table-responsive">
+	    <table class="table table-hover">
+	      <thead>
+	        <tr>
+	          <th style="color: #fff">#</th>
+	          <th>Evento</th>
+	          <th>Fecha</th>
+	          <th>Hora</th>
+	          <th>Auditorio</th>
+	          <th>Ponente</th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	        <tr>
+	          <td>2</td>
+	          <td>Reclutamiento Bosch</td>
+	          <td>30/11/2018</td>
+	          <td>14:00</td>
+	          <td>Matute Remus</td>
+	          <td>Bosch</td>
+	        </tr>
+	        <tr>
+	          <td>2</td>
+	          <td>Reclutamiento Bosch</td>
+	          <td>30/11/2018</td>
+	          <td>14:00</td>
+	          <td>Matute Remus</td>
+	          <td>Bosch</td>
+	        </tr>
+	      </tbody>
+	    </table>
+	  </div>
+	</div>
 
-        <form>
-          <div class="flex-container">
-            <div class="form-group flex-container">
-              <div>
-              <label for="validation01">Nombres</label>
-              <input type="text" class="form-control is-valid" id="validation01" placeholder="Nombres" value="" required>
-            </div>
-            <div>
-              <label for="validation01">Apellidos</label>
-              <input type="text" class="form-control is-valid" id="validation01" placeholder="Apellidos" value="" required>
-              </div>
-              <div>
-              <label for="validation01">Codigo</label>
-              <input type="text" class="form-control is-valid" id="validation01" placeholder="Codigo" value="" required>
-            </div>
-            <div>
-               <label for="validation01">Puesto</label>
-               <br>
-               <select class="btn btn-default " >
-                  <option>Coordinador</option>
-                  <option>Profesor</option>
-                  <option>Administrativo</option>
-              </select>
+</div>
 
-
-            </div>
-
-          </div>
-        </div>
-    </form>
-
-
-  </div>
 </body>
+</html>
