@@ -1,3 +1,21 @@
+<?php
+include_once '../../app/conexion.inc.php';
+$titulo = "Nuevo usuario";
+Conexion::abrirConexion();
+$conexion = Conexion::obtenerConexion();
+$sql = "SELECT * FROM auditorio;";
+
+if(isset($conexion)) {
+        try {
+            $sentencia = $conexion->prepare($sql);
+            $sentencia->execute();
+            $auditorio = $sentencia->fetchAll();
+        } catch (PDOException $ex) {
+            print("ERROR: ".$ex->getMessage());
+        }
+}
+Conexion::cerrarConexion();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,9 +56,13 @@
               AUDITORIOS
             </a>
             <div class="dropdown-menu bg-light " >
-              <a class="dropdown-item" href="../auditorios/Auditorio.html">Matute Remus</a>
-              <a class="dropdown-item" href="#">Enrique Diaz</a>
-              <a class="dropdown-item" href="#">Link 3</a>
+                <?php
+                    foreach ($auditorio as $row) {
+                        extract($row);
+                        $aux = strtolower(explode(" ", $row['nombreAuditorio']));
+                        echo "<a class='dropdown-item' href='../auditorios/".$aux.".html'>".$row['nombreAuditorio']."</a>";
+                    }
+                ?>
             </div>
           </li>
         </ul>
@@ -80,7 +102,7 @@
 	                  <option>Coordinador</option>
 	                  <option>Profesor</option>
 	                  <option>Administrativo</option>
-	              </select>   
+	              </select>
 	            </div>
 	       	</div>
 
@@ -89,7 +111,7 @@
 	            	<br>
 	            	<span id="reauth-email" class="reauth-email"></span>
 	                <input type="text" id="inputEmail" class="form-control" placeholder="E-mail" required autofocus>
-	            </div> 
+	            </div>
 	            <div class="col-sm-4">
 					</br>
 	                <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
@@ -99,7 +121,7 @@
             		<button class="btn btn-lg btn-block btn-signin btn-primary" type="submit">Crear</button>
             	</div>
         	</div>
-            
+
           </div>
         </div>
         <div class="flex-container">
@@ -107,6 +129,6 @@
 				<img class="img-fluid img-thumbnail" src="https://www.roastbrief.com.mx/wp-content/uploads/2018/07/roastbrief-oratoria-7-consejos-para-dar-conferencias-inolvidables-780x405.jpg" style="width:80% ; height: 80%">
 			</div>
 		</div>
-        
+
 </body>
 </html>
