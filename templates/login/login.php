@@ -7,7 +7,6 @@ include_once '../../app/validarLogin.inc.php';
 include_once '../../app/redireccion.inc.php';
 include_once '../../app/controlSesion.inc.php';
 
-$titulo = "Landing page";
 Conexion::abrirConexion();
 $conexion = Conexion::obtenerConexion();
 $sql = "SELECT * FROM auditorio;";
@@ -40,7 +39,6 @@ if(isset($_POST['login'])) {
 
     Conexion::cerrarConexion();
 }
-$titulo = 'Login';
 ?>
 
 <!DOCTYPE html>
@@ -82,7 +80,7 @@ $titulo = 'Login';
                                     extract($row);
                                     $aux = explode(" ", $row['nombreAuditorio']);
                                     $aux = strtolower($aux[0]);
-                                    echo "<a class='dropdown-item' href='../auditorios/".$aux.".html'>".$row['nombreAuditorio']."</a>";
+                                    echo "<a class='dropdown-item' href='../auditorios/".$aux.".php'>".$row['nombreAuditorio']."</a>";
                                 }
                             ?>
 						</div>

@@ -1,4 +1,3 @@
-<link rel="shortcut icon" href="../../img/admev.ico" />
 <?php
 include_once '../../app/conexion.inc.php';
 $titulo = "Nuevo usuario";
@@ -20,7 +19,7 @@ Conexion::cerrarConexion();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Admev Log-In</title>
+    <title>Eventos</titles>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
