@@ -58,9 +58,10 @@ Conexion::cerrarConexion();
           </a>
           <div class="dropdown-menu bg-light " >
               <?php
-                  foreach ($auditorio as $row) {
-                      extract($row);
-                      echo "<a class='dropdown-item' href='../auditorios/Auditorio.html'>".$row['nombreAuditorio']."</a>";
+                    foreach ($auditorio as $row) {
+                        extract($row);
+                        $aux = strtolower(explode(" ", $row['nombreAuditorio']));
+                        echo "<a class='dropdown-item' href='../auditorios/".$aux.".html'>".$row['nombreAuditorio']."</a>";
                   }
               ?>
           </div>

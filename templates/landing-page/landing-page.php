@@ -61,7 +61,9 @@ Conexion::cerrarConexion();
                         <?php
                             foreach ($auditorio as $row) {
                                 extract($row);
-                                echo "<a class='dropdown-item' href='../auditorios/Auditorio.html'>".$row['nombreAuditorio']."</a>";
+                                $aux = explode(" ", $row['nombreAuditorio']);
+                                $aux = strtolower($aux[0]);
+                                echo "<a class='dropdown-item' href='../auditorios/".$aux.".html'>".$row['nombreAuditorio']."</a>";
                             }
                         ?>
 					</div>
