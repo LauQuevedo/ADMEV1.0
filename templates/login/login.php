@@ -81,7 +81,7 @@ $titulo = 'Login';
                                     extract($row);
                                     $aux = explode(" ", $row['nombreAuditorio']);
                                     $aux = strtolower($aux[0]);
-                                    echo "<a class='dropdown-item' href='../auditorios/".$aux.".html'>".$row['nombreAuditorio']."</a>";
+                                    echo "<a class='dropdown-item' href='../auditorios/".$aux.".php'>".$row['nombreAuditorio']."</a>";
                                 }
                             ?>
 						</div>
