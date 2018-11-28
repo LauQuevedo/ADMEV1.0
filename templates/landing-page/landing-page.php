@@ -38,7 +38,7 @@ Conexion::cerrarConexion();
 	<!-- Brand -->
 	<div class="container">
 		<a class="navbar-brand"  href="../landing-page/landing-page.php">ADMEV</a>
-		<a class="navbar-brand navbar-right"  href="#">CUCEI</a>
+		<a class="navbar-brand navbar-right"  href="http://www.cucei.udg.mx">CUCEI</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       	<span class="navbar-toggler-icon"></span>
       </button>
