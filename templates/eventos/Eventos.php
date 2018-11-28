@@ -1,3 +1,21 @@
+<?php
+include_once '../../app/conexion.inc.php';
+$titulo = "Nuevo usuario";
+Conexion::abrirConexion();
+$conexion = Conexion::obtenerConexion();
+$sql = "SELECT * FROM auditorio;";
+
+if(isset($conexion)) {
+        try {
+            $sentencia = $conexion->prepare($sql);
+            $sentencia->execute();
+            $auditorio = $sentencia->fetchAll();
+        } catch (PDOException $ex) {
+            print("ERROR: ".$ex->getMessage());
+        }
+}
+Conexion::cerrarConexion();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,9 +56,14 @@
             AUDITORIOS
           </a>
           <div class="dropdown-menu bg-light " >
-            <a class="dropdown-item" href="../auditorios/Auditorio.html">Matute Remus</a>
-            <a class="dropdown-item" href="#">Enrique Diaz</a>
-            <a class="dropdown-item" href="#">Link 3</a>
+              <?php
+                  foreach ($auditorio as $row) {
+                      extract($row);
+                      $aux = explode(" ", $row['nombreAuditorio']);
+                      $aux = strtolower($aux[0]);
+                      echo "<a class='dropdown-item' href='../auditorios/".$aux.".html'>".$row['nombreAuditorio']."</a>";
+                  }
+              ?>
           </div>
         </li>
       </ul>

@@ -79,7 +79,8 @@ $titulo = 'Login';
                             <?php
                                 foreach ($auditorio as $row) {
                                     extract($row);
-                                    $aux = strtolower(explode(" ", $row['nombreAuditorio']));
+                                    $aux = explode(" ", $row['nombreAuditorio']);
+                                    $aux = strtolower($aux[0]);
                                     echo "<a class='dropdown-item' href='../auditorios/".$aux.".html'>".$row['nombreAuditorio']."</a>";
                                 }
                             ?>

@@ -1,3 +1,21 @@
+<?php
+include_once '../../app/conexion.inc.php';
+$titulo = "Nuevo usuario";
+Conexion::abrirConexion();
+$conexion = Conexion::obtenerConexion();
+$sql = "SELECT * FROM auditorio;";
+
+if(isset($conexion)) {
+        try {
+            $sentencia = $conexion->prepare($sql);
+            $sentencia->execute();
+            $auditorio = $sentencia->fetchAll();
+        } catch (PDOException $ex) {
+            print("ERROR: ".$ex->getMessage());
+        }
+}
+Conexion::cerrarConexion();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,10 +60,14 @@
 						AUDITORIOS
 					</a>
 					<div class="dropdown-menu bg-light " >
-						<a class="dropdown-item" href="matute.html">Matute Remus</a>
-						<a class="dropdown-item" href="#">Enrique Diaz</a>
-						<a class="dropdown-item" href="#">ModuloY</a>
-					</div>
+                        <?php
+                            foreach ($auditorio as $row) {
+                                extract($row);
+                                $aux = explode(" ", $row['nombreAuditorio']);
+                                $aux = strtolower($aux[0]);
+                                echo "<a class='dropdown-item' href='../auditorios/".$aux.".html'>".$row['nombreAuditorio']."</a>";
+                            }
+                        ?>
 				</li>
 			</ul>
 		</div>
@@ -55,14 +77,14 @@
 <!---------------------------------Nombre Auditorio--------------------------------->
 
 	<div class="page-header AudiTitle AudiTitle" style="padding: 2%">
-	  <h1><small> 	Auditorio </small> Modulo Y<h1>
+	  <h1><small> 	Auditorio </small> Antonio Rodriguez<h1>
 	</div>
 
 <div class="flex-container" >
 	<div>
 		<div>
 			<h3 style="color: #3bd65f; font-weight: bold" >Descripcion</h3>
-			<p>El Auditorio del modulo Y es el mas reciente de este Centro Universitario, auque es un auditorio pequeño, cuenta con excelente equipaminto para Ponencias, ademas de Aire acondicionado y una cabina de facil acceso. El escenario cuenta con display para la exposicion ademas de escritorios y pantallas que puede observar el ponente.</p>
+			<p>Este auditorio es uno de los principales en el Centro Universitario auque es el mas pequeño de los mismos, </p>
 		</div>
 <!---------------------------------Galeria de Imagenes--------------------------------->
 
@@ -146,6 +168,5 @@
 	</div>
 
 
-	
-</body>
 
+</body>

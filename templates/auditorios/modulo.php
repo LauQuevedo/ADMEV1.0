@@ -1,4 +1,21 @@
+<?php
+include_once '../../app/conexion.inc.php';
+$titulo = "Nuevo usuario";
+Conexion::abrirConexion();
+$conexion = Conexion::obtenerConexion();
+$sql = "SELECT * FROM auditorio;";
 
+if(isset($conexion)) {
+        try {
+            $sentencia = $conexion->prepare($sql);
+            $sentencia->execute();
+            $auditorio = $sentencia->fetchAll();
+        } catch (PDOException $ex) {
+            print("ERROR: ".$ex->getMessage());
+        }
+}
+Conexion::cerrarConexion();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +39,7 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-success">
 	<!-- Brand -->
 	<div class="container">
-		<a class="navbar-brand"  href="../landing-page/landing-page.php">ADMEV</a>
+		<a class="navbar-brand"  href="principal.html">ADMEV</a>
 		<a class="navbar-brand navbar-right"  href="#">CUCEI</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       	<span class="navbar-toggler-icon"></span>
@@ -31,7 +48,7 @@
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item active">
-					<a class="nav-link" href="../login/login.php">Log In</a>
+					<a class="nav-link" href="log-in.html">Log In</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">Solicitud</a>
@@ -43,9 +60,14 @@
 						AUDITORIOS
 					</a>
 					<div class="dropdown-menu bg-light " >
-						<a class="dropdown-item" href="matute.html">Matute Remus</a>
-						<a class="dropdown-item" href="#">Enrique Diaz</a>
-						<a class="dropdown-item" href="#">Link 3</a>
+						<?php
+                            foreach ($auditorio as $row) {
+                                extract($row);
+                                $aux = explode(" ", $row['nombreAuditorio']);
+                                $aux = strtolower($aux[0]);
+                                echo "<a class='dropdown-item' href='../auditorios/".$aux.".html'>".$row['nombreAuditorio']."</a>";
+                            }
+                        ?>
 					</div>
 				</li>
 			</ul>
@@ -56,14 +78,14 @@
 <!---------------------------------Nombre Auditorio--------------------------------->
 
 	<div class="page-header AudiTitle AudiTitle" style="padding: 2%">
-	  <h1><small> 	Auditorio </small> Matute Remus</h1>
+	  <h1><small> 	Auditorio </small> Modulo Y<h1>
 	</div>
 
 <div class="flex-container" >
 	<div>
 		<div>
 			<h3 style="color: #3bd65f; font-weight: bold" >Descripcion</h3>
-			<p>Aqui encontraras informacion sobre el calendario de los eventos realizados en los auditorios de CUCEI, asi como las caracteristicas y la posibilidad de solicitar uno de estos espacios cuando lo necesites con 15 dias de anticipacion para verificar tu solicitud.</p>
+			<p>El Auditorio del modulo Y es el mas reciente de este Centro Universitario, auque es un auditorio pequeño, cuenta con excelente equipaminto para Ponencias, ademas de Aire acondicionado y una cabina de facil acceso. El escenario cuenta con display para la exposicion ademas de escritorios y pantallas que puede observar el ponente.</p>
 		</div>
 <!---------------------------------Galeria de Imagenes--------------------------------->
 
@@ -71,26 +93,26 @@
 			<div style="justify-content: center">
 				<div class="row flex-conteiner" style="padding: 2%">
 			    <div class="thumbnail">
-			    	<a href="https://igx.4sqi.net/img/general/600x600/5631643_Jg7OIF8bXsLl4y1vbYpJ2yJaxUDxDW1BtFA4dgmU4hU.jpg">
-				      <img class="imgAudiGal" src="https://igx.4sqi.net/img/general/600x600/5631643_Jg7OIF8bXsLl4y1vbYpJ2yJaxUDxDW1BtFA4dgmU4hU.jpg">
+			    	<a href="https://fastly.4sqi.net/img/general/200x200/68575979_6AJvU-_6MlpbmuQN_zdgAeZuvwuclOm0UgG4NBj1EcU.jpg">
+				      <img class="imgAudiGal" src="https://fastly.4sqi.net/img/general/200x200/68575979_6AJvU-_6MlpbmuQN_zdgAeZuvwuclOm0UgG4NBj1EcU.jpg">
 				      <div class="caption">
-				        <h6>Escenario Externo</h6>
+				        <h6>Escenario</h6>
 				      </div>
 				    </a>
 			    </div>
 			    <div class="thumbnail">
-		    		<a href="http://www.cucei.udg.mx/sites/default/files/styles/noticia/public/galeria_imagenes/img_8843.jpg?itok=YzvHfs-E">
-		     	 	<img class="imgAudiGal" src="http://www.cucei.udg.mx/sites/default/files/styles/noticia/public/galeria_imagenes/img_8843.jpg?itok=YzvHfs-E">
-		      		<div class="caption">
-		        		<h6>Escenario Interno</h6>
-		      		</div>
-		      		</a>
+		    		<a href="https://i.ytimg.com/vi/53AkYyQlpyY/maxresdefault.jpg">
+				      <img class="imgAudiGal" src="https://i.ytimg.com/vi/53AkYyQlpyY/maxresdefault.jpg">
+				      <div class="caption">
+				        <h6>Explanada</h6>
+				      </div>
+				    </a>
 		    	</div>
 		    	<div class="thumbnail">
 			   	  <a href="http://static.panoramio.com/photos/original/12041861.jpg">
-				      <img class="imgAudiGal" src="http://static.panoramio.com/photos/original/12041861.jpg" href="http://static.panoramio.com/photos/original/12041861.jpg">
+				      <img class="imgAudiGal" src="http://www.comsoc.udg.mx/sites/default/files/styles/noticia/public/161004_inauguracion_saber_ingenieria_quimica_2016_galfonzo_3.jpg?itok=E9fw6V0E" href="http://www.comsoc.udg.mx/sites/default/files/styles/noticia/public/161004_inauguracion_saber_ingenieria_quimica_2016_galfonzo_3.jpg?itok=E9fw6V0E">
 				      <div class="caption">
-				        <h6>GradasExterior</h6>
+				        <h6>Asientos</h6>
 			    	</div>
 			    	</a>
 			    </div>
@@ -104,32 +126,32 @@
 			<div>
 				<ul class="list-group">
 		  			<li class="list-group-item d-flex justify-content-between align-items-center">
-		  				Cañon
-		    			<span class="badge badge-primary badge-pill">1</span>
+		 				Modems
+		    			<span class="badge badge-primary badge-pill">2</span>
 		  			</li>
 		  			<li class="list-group-item d-flex justify-content-between align-items-center">
 						Pantallas
-						<span class="badge badge-primary badge-pill">0</span>
+						<span class="badge badge-primary badge-pill">4</span>
 					</li>
 		  			<li class="list-group-item d-flex justify-content-between align-items-center">
 		   			    Asientos
-		    	    	<span class="badge badge-primary badge-pill">250</span>
+		    	    	<span class="badge badge-primary badge-pill">100</span>
 		            </li>
 				</ul>
 			</div>
 			<div>
 				<ul class="list-group">
 		  			<li class="list-group-item d-flex justify-content-between align-items-center">
-		  				Cañon
+		  				Mesas presidium
 		    			<span class="badge badge-primary badge-pill">1</span>
 		  			</li>
 		  			<li class="list-group-item d-flex justify-content-between align-items-center">
-						Pantallas
-						<span class="badge badge-primary badge-pill">0</span>
+						Microfonos
+						<span class="badge badge-primary badge-pill">2</span>
 					</li>
 		  			<li class="list-group-item d-flex justify-content-between align-items-center">
-		   			    Asientos
-		    	    	<span class="badge badge-primary badge-pill">250</span>
+		   			    Entradas
+		    	    	<span class="badge badge-primary badge-pill">1</span>
 		            </li>
 				</ul>
 			</div>
@@ -147,6 +169,5 @@
 	</div>
 
 
-	
-</body>
 
+</body>
