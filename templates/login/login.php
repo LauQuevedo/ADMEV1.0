@@ -6,6 +6,22 @@ include_once '../../app/login.inc.php';
 include_once '../../app/validarLogin.inc.php';
 include_once '../../app/redireccion.inc.php';
 include_once '../../app/controlSesion.inc.php';
+
+Conexion::abrirConexion();
+$conexion = Conexion::obtenerConexion();
+$sql = "SELECT * FROM auditorio;";
+
+if(isset($conexion)) {
+        try {
+            $sentencia = $conexion->prepare($sql);
+            $sentencia->execute();
+            $auditorio = $sentencia->fetchAll();
+        } catch (PDOException $ex) {
+            print("ERROR: ".$ex->getMessage());
+        }
+}
+Conexion::cerrarConexion();
+
 /*
 if(ControlSesion::sesion_iniciada()) {
     Redireccion::redirigir(SERVIDOR);
@@ -23,7 +39,6 @@ if(isset($_POST['login'])) {
 
     Conexion::cerrarConexion();
 }
-$titulo = 'Login';
 ?>
 
 <!DOCTYPE html>
@@ -33,6 +48,7 @@ $titulo = 'Login';
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="shortcut icon" href="../../img/admev.ico" />
 	<link rel="stylesheet" href="../../css/main.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
@@ -43,8 +59,8 @@ $titulo = 'Login';
 	<nav class="navbar navbar-expand-sm navbar-dark bg-success">
 		<!-- Brand -->
 		<div class="container">
-			<a class="navbar-brand"  href="../landing-page/landing-page.html">ADMEV</a>
-			<a class="navbar-brand navbar-right"  href="#">CUCEI</a>
+			<a class="navbar-brand"  href="../landing-page/landing-page.php">ADMEV</a>
+			<a class="navbar-brand navbar-right"  href="http://www.cucei.udg.mx">CUCEI</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 	      		<span class="navbar-toggler-icon"></span>
 	      	</button>
@@ -59,9 +75,14 @@ $titulo = 'Login';
 							AUDITORIOS
 						</a>
 						<div class="dropdown-menu bg-light " >
-							<a class="dropdown-item" href="../auditorios/Auditorio.html">Matute Remus</a>
-							<a class="dropdown-item" href="#">Enrique Diaz</a>
-							<a class="dropdown-item" href="#">Link 3</a>
+                            <?php
+                                foreach ($auditorio as $row) {
+                                    extract($row);
+                                    $aux = explode(" ", $row['nombreAuditorio']);
+                                    $aux = strtolower($aux[0]);
+                                    echo "<a class='dropdown-item' href='../auditorios/".$aux.".php'>".$row['nombreAuditorio']."</a>";
+                                }
+                            ?>
 						</div>
 					</li>
 				</ul>
