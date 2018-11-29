@@ -20,8 +20,8 @@ class ValidadorEvento {
     private $errorCodigoSol;
 
     public function __construct($nombreS, $nombreR, $apellidoS, $apellidoR, $codigoS, $codigoR, $conexion) {
-        $this->$avisoInicio = "<br><div class='alert alert-danger role=alert'>";
-        $this->$avisoCierra = "</div>";
+        $this->avisoInicio = "<br><div class='alert alert-danger role=alert'>";
+        $this->avisoCierra = "</div>";
         $nombreS = "";
         $apellidoS = "";
         $codigoS = "";
@@ -61,7 +61,7 @@ class ValidadorEvento {
         if(!$this->variableInicializada($apellidoR)) {
             return "Debes escribir un apellido del responsable.";
         } else {
-            $this->$apellidoR = $apellidoR;
+            $this->apellidoR = $apellidoR;
         }
         if(strlen($apellidoR) <= 7) {
             return "El apellido debe ser mas largo de 6 caracteres.";
@@ -75,7 +75,7 @@ class ValidadorEvento {
         if(!$this->variableInicializada($codigoR)) {
             return "Debes escribir un codigo del responsable.";
         } else {
-            $this->$codigoR = $codigoR;
+            $this->codigoR = $codigoR;
         }
         if(strlen($codigoR) <= 4) {
             return "El codigo debe ser mas largo de 4 caracteres.";
@@ -104,7 +104,7 @@ class ValidadorEvento {
         if(!$this->variableInicializada($apellidoS)) {
             return "Debes escribir un apellido del responsable.";
         } else {
-            $this->$apellidoS = $apellidoS;
+            $this->apellidoS = $apellidoS;
         }
         if(strlen($apellidoS) <= 7) {
             return "El apellido debe ser mas largo de 6 caracteres.";
@@ -118,7 +118,7 @@ class ValidadorEvento {
         if(!$this->variableInicializada($codigoS)) {
             return "Debes escribir un codigo del responsable.";
         } else {
-            $this->$codigoS = $codigoS;
+            $this->codigoS = $codigoS;
         }
         if(strlen($codigoS) <= 4) {
             return "El codigo debe ser mas largo de 4 caracteres.";
@@ -129,45 +129,75 @@ class ValidadorEvento {
         return "";
     }
     public function getNombreR() {
-        return $this->$nombreR;
+        return $this->nombreR;
     }
     public function getApellidoR() {
-        return $this->$apellidoR;
+        return $this->apellidoR;
     }
     public function getCodigoR() {
-        return $this->$codigoR;
+        return $this->codigoR;
     }
     public function getNombreS() {
-        return $this->$nombreS;
+        return $this->nombreS;
     }
     public function getApellidoS() {
-        return $this->$apellidoS;
+        return $this->apellidoS;
     }
     public function getCodigoS() {
-        return $this->$codigoS;
+        return $this->codigoS;
     }
     public function getErrorNombreR() {
-        return $this->$errorNombreRes;
+        return $this->errorNombreRes;
     }
     public function getErrorApellidoR() {
-        return $this->$errorApellidoR;
+        return $this->errorApellidoR;
     }
     public function getErrorCodigoR() {
-        return $this->$errorCodigoRes;
+        return $this->errorCodigoRes;
     }
     public function getErrorNombreS() {
-        return $this->$errorNombreSol;
+        return $this->errorNombreSol;
     }
     public function getErrorApellidoS() {
-        return $this->$errorApellidoS;
+        return $this->errorApellidoS;
     }
     public function getErrorCodigoS() {
-        return $this->$errorCodigoSol;
+        return $this->errorCodigoSol;
+    }
+    public function mostrarErrorNombreR() {
+        if($this->errorNombreRes !== "") {
+            echo $this->avisoInicio.$this->errorNombreRes.$this->avisoCierra;
+        }
+    }
+    public function mostrarErrorApellidoR() {
+        if($this->errorApellidoR !== "") {
+            echo $this->avisoInicio.$this->errorApellidoR.$this->avisoCierra;
+        }
+    }
+    public function mostrarErrorCodigoR() {
+        if($this->errorCodigoRes !== "") {
+            echo $this->avisoInicio.$this->errorCodigoRes.$this->avisoCierra;
+        }
+    }
+    public function mostrarErrorNombreS() {
+        if($this->errorNombreSol !== "") {
+            echo $this->avisoInicio.$this->errorNombreSol.$this->avisoCierra;
+        }
+    }
+    public function mostrarErrorApellidoS() {
+        if($this->errorApellidoS !== "") {
+            echo $this->avisoInicio.$this->errorApellidoS.$this->avisoCierra;
+        }
+    }
+    public function mostrarErrorCodigoS() {
+        if($this->errorCodigoSol !== "") {
+            echo $this->avisoInicio.$this->errorCodigoSol.$this->avisoCierra;
+        }
     }
     public function registroValido() {
-        if($this->$errorNombreRes === "" && $this->$errorNombreSol === ""
-            && $this->$errorApellidoR === "" && $this->$errorApellidoS === ""
-            && $this->$errorCodigoRes === "" && $this->$errorCodigoSol === "") {
+        if($this->errorNombreRes === "" && $this->errorNombreSol === ""
+            && $this->errorApellidoR === "" && $this->errorApellidoS === ""
+            && $this->errorCodigoRes === "" && $this->errorCodigoSol === "") {
                 return true;
         }
         return false;

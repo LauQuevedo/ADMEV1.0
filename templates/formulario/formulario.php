@@ -1,5 +1,6 @@
 <?php
 include_once '../../app/conexion.inc.php';
+include_once '../../app/validarEvento.inc.php';
 Conexion::abrirConexion();
 $conexion = Conexion::obtenerConexion();
 $sql = "SELECT * FROM auditorio;";
