@@ -71,9 +71,6 @@ Conexion::cerrarConexion();
   </div>
 </nav>
 <br>
-<div class="page-header AudiTitle AudiTitle" style="padding: 1%">
-    <h1>Eventos del Centro Univirsitario</h1>
-  </div>
 
 <div class="flex-container">
 	 <div class="table-responsive">

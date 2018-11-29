@@ -19,11 +19,7 @@ Conexion::cerrarConexion();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<<<<<<< HEAD:templates/auditorios/EnriqueDiaz.html
-		<title>Admev EnriqueD</title>
-=======
-		<title>Auditorio Enrique</title>
->>>>>>> 41347f2c27486962f8470709c5fb03c2127bd058:templates/auditorios/enrique.php
+		<title>Admev | Auditorio Enrique</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="../../css/bootstrap.min.css">

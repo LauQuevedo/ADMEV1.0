@@ -19,11 +19,7 @@ Conexion::cerrarConexion();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<<<<<<< HEAD:templates/auditorios/ModuloY.html
-		<title>ADMEV Auditorio-ModY</title>
-=======
-		<title>Modulo Y</title>
->>>>>>> 41347f2c27486962f8470709c5fb03c2127bd058:templates/auditorios/modulo.php
+		<title>Admev | Modulo Y</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="../../css/bootstrap.min.css">
