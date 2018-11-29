@@ -36,12 +36,6 @@ class ValidadorEvento {
         $errorNombreSol = validarNombreS($conexion, $nombreS);
         $errorApellidoS = validarApellidoS($conexion, $apellidoS);
         $errorCodigoSol = validarCodigoS($conexion, $codigoS);
-        if($this->$errorNombreRes === "" && $this->$errorNombreSol === ""
-            && $this->$errorApellidoR === "" && $this->$errorApellidoS === ""
-            && $this->$errorCodigoRes === "" && $this->$errorCodigoSol === "") {
-
-        }
-
     }
 
     private function variableInicializada($var) {
@@ -134,41 +128,49 @@ class ValidadorEvento {
         }
         return "";
     }
-    private function getNombreR() {
+    public function getNombreR() {
         return $this->$nombreR;
     }
-    private function getApellidoR() {
+    public function getApellidoR() {
         return $this->$apellidoR;
     }
-    private function getCodigoR() {
+    public function getCodigoR() {
         return $this->$codigoR;
     }
-    private function getNombreS() {
+    public function getNombreS() {
         return $this->$nombreS;
     }
-    private function getApellidoS() {
+    public function getApellidoS() {
         return $this->$apellidoS;
     }
-    private function getCodigoS() {
+    public function getCodigoS() {
         return $this->$codigoS;
     }
-    private function getErrorNombreR() {
+    public function getErrorNombreR() {
         return $this->$errorNombreRes;
     }
-    private function getErrorApellidoR() {
+    public function getErrorApellidoR() {
         return $this->$errorApellidoR;
     }
-    private function getErrorCodigoR() {
+    public function getErrorCodigoR() {
         return $this->$errorCodigoRes;
     }
-    private function getErrorNombreS() {
+    public function getErrorNombreS() {
         return $this->$errorNombreSol;
     }
-    private function getErrorApellidoS() {
+    public function getErrorApellidoS() {
         return $this->$errorApellidoS;
     }
-    private function getErrorCodigoS() {
+    public function getErrorCodigoS() {
         return $this->$errorCodigoSol;
+    }
+    public function registroValido() {
+        if($this->$errorNombreRes === "" && $this->$errorNombreSol === ""
+            && $this->$errorApellidoR === "" && $this->$errorApellidoS === ""
+            && $this->$errorCodigoRes === "" && $this->$errorCodigoSol === "") {
+                return true;
+        }
+        return false;
     }
 }
 ?>

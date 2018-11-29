@@ -71,94 +71,19 @@ Conexion::cerrarConexion();
 </nav>
 <br>
 <!-- -------------------Formulario------------------------->
-      <div>
-        <form>
-<!-- -------------------Solicitante 1------------------------->
-          <div style="padding: 1%">
-          <h6>Datos del solicitante Responsable</h6>
-          <hr align="left" size="2" width="80%"> </hr>
-          </div>
-          <div class="flex-container">
-            <div class="form-group flex-container">
-              <div>
-              <label for="validation01">Nombres</label>
-              <input type="text" class="form-control is-valid" id="validation01" placeholder="Nombres" value="" required>
-            </div>
-            <div>
-              <label for="validation01">Apellidos</label>
-              <input type="text" class="form-control is-valid" id="validation01" placeholder="Apellidos" value="" required>
-            </div>
-            <div>
-              <label for="validation01">Codigo</label>
-              <input type="text" class="form-control is-valid" id="validation01" placeholder="Codigo" value="" required>
-            </div>
-            <div>
-               <label for="validation01">Puesto</label>
-               <br>
-               <select class="btn btn-default " >
-                  <option>Coordinador</option>
-                  <option>Profesor</option>
-                  <option>Administrativo</option>
-              </select>
-            </div>
-          </div>
-        </div>
-<!-- -------------------Solicitante 2------------------------->
-<div style="padding: 1%">
-          <h6 >Datos del Alumno Solicitante</h6>
-          <hr align="left" size="2" width="80%"> </hr>
-          </div>
-          <div class="flex-container">
-            <div class="form-group flex-container">
-              <div>
-              <label for="validation01">Nombres</label>
-              <input type="text" class="form-control is-valid" id="validation01" placeholder="Nombres" value="" required>
-            </div>
-            <div>
-              <label for="validation01">Apellidos</label>
-              <input type="text" class="form-control is-valid" id="validation01" placeholder="Apellidos" value="" required>
-            </div>
-            <div>
-              <label for="validation01">Codigo</label>
-              <input type="text" class="form-control is-valid" id="validation01" placeholder="Codigo" value="" required>
-            </div>
-            <div>
-               <label for="validation01">Carrera</label>
-               <br>
-               <select class="btn btn-default " >
-                  <option>INCO</option>
-                  <option>INCE</option>
-                  <option>INFO</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-<!-- -------------------Seleccion de Archivo------------------------->
-<div style="padding: 1%">
-          <h6>Cartas de Validacion de Evento</h6>
-          <hr align="left" size="2" width="80%"> </hr>
-
-<div>
-<div class="form-group">
-<input id="file-1" type="file" class="file" multiple=true data-preview-file-type="any">
-</div>
-</div>
-</div>
-<!-- -------------------Envio y Reinicio de Formulario------------------------->
-<div class="form-group">
-<button class="btn btn-primary">Submit</button>
-<button class="btn btn-default" type="reset">Reset</button>
-</div>
-
-    </form>
-
-  </div>
-
+    <div>
+        <form rol="form" method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+            <?php
+                if(isset($_POST['enviar'])) {
+                    include_once 'registroValidado.php';
+                } else {
+                    include_once 'registroVacio.php';
+                }
+            ?>
+        </form>
+    </div>
 </body>
-
 </html>
-
 <!-- -------------------Muestra el nombre del archivo en seleccion------------------------->
 <script>
 $("#file-3").fileinput({
