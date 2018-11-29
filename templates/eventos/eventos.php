@@ -1,6 +1,5 @@
 <?php
 include_once '../../app/conexion.inc.php';
-$titulo = "Nuevo usuario";
 Conexion::abrirConexion();
 $conexion = Conexion::obtenerConexion();
 $sql = "SELECT * FROM auditorio;";
@@ -19,7 +18,7 @@ Conexion::cerrarConexion();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Eventos</titles>
+    <title>Eventos</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
