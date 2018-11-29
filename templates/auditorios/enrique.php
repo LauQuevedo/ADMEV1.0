@@ -52,7 +52,7 @@ Conexion::cerrarConexion();
 					<a class="nav-link" href="../login/login.php">Log In</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Solicitud</a>
+					<a class="nav-link" href="../formulario/formulario.php">Solicitud</a>
 				</li>
 
 				<!-- Dropdown -->

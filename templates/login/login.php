@@ -67,7 +67,7 @@ if(isset($_POST['login'])) {
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
-						<a class="nav-link" href="#">Solicitud</a>
+						<a class="nav-link" href="../formulario/formulario.php">Solicitud</a>
 					</li>
 					<!-- Dropdown -->
 					<li class="nav-item dropdown">
