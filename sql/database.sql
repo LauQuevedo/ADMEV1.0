@@ -18,7 +18,6 @@ CREATE TABLE usuario (
 
 --ALTER TABLE usuario CHANGE idPuestoUsario IdPuestoUsuario INT(11);
 
-
 CREATE TABLE auditorio (
     idAuditorio INT NOT NULL,
     nombreAuditorio VARCHAR(40),
