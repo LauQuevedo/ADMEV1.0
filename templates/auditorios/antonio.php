@@ -1,13 +1,31 @@
+<?php
+include_once '../../app/conexion.inc.php';
+$titulo = "Nuevo usuario";
+Conexion::abrirConexion();
+$conexion = Conexion::obtenerConexion();
+$sql = "SELECT * FROM auditorio;";
 
+if(isset($conexion)) {
+        try {
+            $sentencia = $conexion->prepare($sql);
+            $sentencia->execute();
+            $auditorio = $sentencia->fetchAll();
+        } catch (PDOException $ex) {
+            print("ERROR: ".$ex->getMessage());
+        }
+}
+Conexion::cerrarConexion();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-		<title>Admev Log-In</title>
+		<title>Auditorio Antonio</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="../../css/bootstrap.min.css">
 		<link rel="stylesheet" href="../../css/main.css">
 		<link href="jquery.bsPhotoGallery.css" rel="stylesheet">
+        <link rel="shortcut icon" href="../../img/admev.ico" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
@@ -22,8 +40,8 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-success">
 	<!-- Brand -->
 	<div class="container">
-		<a class="navbar-brand"  href="../landing-page/landing-page.html">ADMEV</a>
-		<a class="navbar-brand navbar-right"  href="#">CUCEI</a>
+		<a class="navbar-brand"  href="../landing-page/landing-page.php">ADMEV</a>
+		<a class="navbar-brand navbar-right"  href="http://www.cucei.udg.mx">CUCEI</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       	<span class="navbar-toggler-icon"></span>
       </button>
@@ -43,10 +61,14 @@
 						AUDITORIOS
 					</a>
 					<div class="dropdown-menu bg-light " >
-						<a class="dropdown-item" href="matute.html">Matute Remus</a>
-						<a class="dropdown-item" href="#">Enrique Diaz</a>
-						<a class="dropdown-item" href="#">Link 3</a>
-					</div>
+                        <?php
+                            foreach ($auditorio as $row) {
+                                extract($row);
+                                $aux = explode(" ", $row['nombreAuditorio']);
+                                $aux = strtolower($aux[0]);
+                                echo "<a class='dropdown-item' href='../auditorios/".$aux.".php'>".$row['nombreAuditorio']."</a>";
+                            }
+                        ?>
 				</li>
 			</ul>
 		</div>
@@ -56,14 +78,14 @@
 <!---------------------------------Nombre Auditorio--------------------------------->
 
 	<div class="page-header AudiTitle AudiTitle" style="padding: 2%">
-	  <h1><small> 	Auditorio </small> Matute Remus</h1>
+	  <h1><small> 	Auditorio </small> Antonio Rodriguez<h1>
 	</div>
 
 <div class="flex-container" >
 	<div>
 		<div>
 			<h3 style="color: #3bd65f; font-weight: bold" >Descripcion</h3>
-			<p>Aqui encontraras informacion sobre el calendario de los eventos realizados en los auditorios de CUCEI, asi como las caracteristicas y la posibilidad de solicitar uno de estos espacios cuando lo necesites con 15 dias de anticipacion para verificar tu solicitud.</p>
+			<p>Este auditorio es uno de los principales en el Centro Universitario auque es el mas pequeño de los mismos, tiene un escenario que se acopla a la sala y las bancas estan intercaladas para la correcta observacion de lo asistentes. </p>
 		</div>
 <!---------------------------------Galeria de Imagenes--------------------------------->
 
@@ -71,26 +93,26 @@
 			<div style="justify-content: center">
 				<div class="row flex-conteiner" style="padding: 2%">
 			    <div class="thumbnail">
-			    	<a href="https://igx.4sqi.net/img/general/600x600/5631643_Jg7OIF8bXsLl4y1vbYpJ2yJaxUDxDW1BtFA4dgmU4hU.jpg">
-				      <img class="imgAudiGal" src="https://igx.4sqi.net/img/general/600x600/5631643_Jg7OIF8bXsLl4y1vbYpJ2yJaxUDxDW1BtFA4dgmU4hU.jpg">
+			    	<a href="http://www.cucei.udg.mx/sites/default/files/noticias/084.jpg">
+				      <img class="imgAudiGal" src="http://www.cucei.udg.mx/sites/default/files/noticias/084.jpg" href="http://www.cucei.udg.mx/sites/default/files/noticias/084.jpg">
 				      <div class="caption">
-				        <h6>Escenario Externo</h6>
+				        <h6>Escenario</h6>
 				      </div>
 				    </a>
 			    </div>
 			    <div class="thumbnail">
-		    		<a href="http://www.cucei.udg.mx/sites/default/files/styles/noticia/public/galeria_imagenes/img_8843.jpg?itok=YzvHfs-E">
-		     	 	<img class="imgAudiGal" src="http://www.cucei.udg.mx/sites/default/files/styles/noticia/public/galeria_imagenes/img_8843.jpg?itok=YzvHfs-E">
-		      		<div class="caption">
-		        		<h6>Escenario Interno</h6>
-		      		</div>
-		      		</a>
+		    		<a href="https://www.informador.mx/__export/1506053294077/sites/elinformador/img/historico/10/887800.jpg_1970638775.jpg">
+				      <img class="imgAudiGal" src="https://www.informador.mx/__export/1506053294077/sites/elinformador/img/historico/10/887800.jpg_1970638775.jpg" href="https://www.informador.mx/__export/1506053294077/sites/elinformador/img/historico/10/887800.jpg_1970638775.jpg">
+				      <div class="caption">
+				        <h6>Edificio</h6>
+				      </div>
+				    </a>
 		    	</div>
 		    	<div class="thumbnail">
-			   	  <a href="http://static.panoramio.com/photos/original/12041861.jpg">
-				      <img class="imgAudiGal" src="http://static.panoramio.com/photos/original/12041861.jpg" href="http://static.panoramio.com/photos/original/12041861.jpg">
+			   	  <a href="http://www.cucei.udg.mx/sites/default/files/noticias/toma_de_protesta_0.jpg">
+				      <img class="imgAudiGal" src="http://www.cucei.udg.mx/sites/default/files/noticias/toma_de_protesta_0.jpg" href="http://www.cucei.udg.mx/sites/default/files/noticias/toma_de_protesta_0.jpg">
 				      <div class="caption">
-				        <h6>GradasExterior</h6>
+				        <h6>Asientos</h6>
 			    	</div>
 			    	</a>
 			    </div>
@@ -104,7 +126,7 @@
 			<div>
 				<ul class="list-group">
 		  			<li class="list-group-item d-flex justify-content-between align-items-center">
-		  				Cañon
+		 				Modems
 		    			<span class="badge badge-primary badge-pill">1</span>
 		  			</li>
 		  			<li class="list-group-item d-flex justify-content-between align-items-center">
@@ -113,23 +135,23 @@
 					</li>
 		  			<li class="list-group-item d-flex justify-content-between align-items-center">
 		   			    Asientos
-		    	    	<span class="badge badge-primary badge-pill">250</span>
+		    	    	<span class="badge badge-primary badge-pill">80</span>
 		            </li>
 				</ul>
 			</div>
 			<div>
 				<ul class="list-group">
 		  			<li class="list-group-item d-flex justify-content-between align-items-center">
-		  				Cañon
+		  				Mesas presidium
 		    			<span class="badge badge-primary badge-pill">1</span>
 		  			</li>
 		  			<li class="list-group-item d-flex justify-content-between align-items-center">
-						Pantallas
-						<span class="badge badge-primary badge-pill">0</span>
+						Microfonos
+						<span class="badge badge-primary badge-pill">2</span>
 					</li>
 		  			<li class="list-group-item d-flex justify-content-between align-items-center">
-		   			    Asientos
-		    	    	<span class="badge badge-primary badge-pill">250</span>
+		   			    Entradas
+		    	    	<span class="badge badge-primary badge-pill">1</span>
 		            </li>
 				</ul>
 			</div>
@@ -147,6 +169,5 @@
 	</div>
 
 
-	
-</body>
 
+</body>

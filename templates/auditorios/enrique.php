@@ -1,11 +1,30 @@
+<?php
+include_once '../../app/conexion.inc.php';
+$titulo = "Nuevo usuario";
+Conexion::abrirConexion();
+$conexion = Conexion::obtenerConexion();
+$sql = "SELECT * FROM auditorio;";
+
+if(isset($conexion)) {
+        try {
+            $sentencia = $conexion->prepare($sql);
+            $sentencia->execute();
+            $auditorio = $sentencia->fetchAll();
+        } catch (PDOException $ex) {
+            print("ERROR: ".$ex->getMessage());
+        }
+}
+Conexion::cerrarConexion();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-		<title>Admev Log-In</title>
+		<title>Auditorio Enrique</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="../../css/bootstrap.min.css">
 		<link rel="stylesheet" href="../../css/main.css">
+        <link rel="shortcut icon" href="../../img/admev.ico" />
 		<link href="jquery.bsPhotoGallery.css" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
@@ -21,8 +40,8 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-success">
 	<!-- Brand -->
 	<div class="container">
-		<a class="navbar-brand"  href="principal.html">ADMEV</a>
-		<a class="navbar-brand navbar-right"  href="#">CUCEI</a>
+		<a class="navbar-brand"  href="../landing-page/landing-page.php">ADMEV</a>
+		<a class="navbar-brand navbar-right"  href="http://www.cucei.udg.mx">CUCEI</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       	<span class="navbar-toggler-icon"></span>
       </button>
@@ -30,7 +49,7 @@
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item active">
-					<a class="nav-link" href="log-in.html">Log In</a>
+					<a class="nav-link" href="../login/login.php">Log In</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">Solicitud</a>
@@ -42,10 +61,14 @@
 						AUDITORIOS
 					</a>
 					<div class="dropdown-menu bg-light " >
-						<a class="dropdown-item" href="matute.html">Matute Remus</a>
-						<a class="dropdown-item" href="#">Enrique Diaz</a>
-						<a class="dropdown-item" href="#">ModuloY</a>
-						<a class="dropdown-item" href="#">Antonio Rodriguez</a>
+                        <?php
+                            foreach ($auditorio as $row) {
+                                extract($row);
+                                $aux = explode(" ", $row['nombreAuditorio']);
+                                $aux = strtolower($aux[0]);
+                                echo "<a class='dropdown-item' href='../auditorios/".$aux.".php'>".$row['nombreAuditorio']."</a>";
+                            }
+                        ?>
 					</div>
 				</li>
 			</ul>
@@ -56,14 +79,14 @@
 <!---------------------------------Nombre Auditorio--------------------------------->
 
 	<div class="page-header AudiTitle AudiTitle" style="padding: 2%">
-	  <h1><small> 	Auditorio </small> Antonio Rodriguez<h1>
+	  <h1><small> 	Auditorio </small> Enrique Diaz de Leon</h1>
 	</div>
 
 <div class="flex-container" >
 	<div>
 		<div>
 			<h3 style="color: #3bd65f; font-weight: bold" >Descripcion</h3>
-			<p>Este auditorio es uno de los principales en el Centro Universitario auque es el mas pequeño de los mismos, tiene un escenario que se acopla a la sala y las bancas estan intercaladas para la correcta observacion de lo asistentes. </p>
+			<p>El auditorio Enrique Diaz de Leon se encuentra ubicado en el Edificio de Rectoria del CUCEI, en el son realizadas las principales ponencias del centro universitario, así como las bienvenidas a los estudiantes cada semestre y reclutamiento de algunas empresas. Cuenta con una explanada externa pequeña y un solo acceso al publico.</p>
 		</div>
 <!---------------------------------Galeria de Imagenes--------------------------------->
 
@@ -71,24 +94,24 @@
 			<div style="justify-content: center">
 				<div class="row flex-conteiner" style="padding: 2%">
 			    <div class="thumbnail">
-			    	<a href="http://www.cucei.udg.mx/sites/default/files/noticias/084.jpg">
-				      <img class="imgAudiGal" src="http://www.cucei.udg.mx/sites/default/files/noticias/084.jpg" href="http://www.cucei.udg.mx/sites/default/files/noticias/084.jpg">
+			    	<a href="https://fastly.4sqi.net/img/general/200x200/68575979_6AJvU-_6MlpbmuQN_zdgAeZuvwuclOm0UgG4NBj1EcU.jpg">
+				      <img class="imgAudiGal" src="https://fastly.4sqi.net/img/general/200x200/68575979_6AJvU-_6MlpbmuQN_zdgAeZuvwuclOm0UgG4NBj1EcU.jpg">
 				      <div class="caption">
 				        <h6>Escenario</h6>
 				      </div>
 				    </a>
 			    </div>
 			    <div class="thumbnail">
-		    		<a href="https://www.informador.mx/__export/1506053294077/sites/elinformador/img/historico/10/887800.jpg_1970638775.jpg">
-				      <img class="imgAudiGal" src="https://www.informador.mx/__export/1506053294077/sites/elinformador/img/historico/10/887800.jpg_1970638775.jpg" href="https://www.informador.mx/__export/1506053294077/sites/elinformador/img/historico/10/887800.jpg_1970638775.jpg">
+		    		<a href="http://www.ntrguadalajara.com/evidimg/2017-03-28_10-03-40___7350.png">
+				      <img class="imgAudiGal" src="http://www.ntrguadalajara.com/evidimg/2017-03-28_10-03-40___7350.png">
 				      <div class="caption">
-				        <h6>Edificio</h6>
+				        <h6>Entrada</h6>
 				      </div>
 				    </a>
 		    	</div>
 		    	<div class="thumbnail">
-			   	  <a href="http://www.cucei.udg.mx/sites/default/files/noticias/toma_de_protesta_0.jpg">
-				      <img class="imgAudiGal" src="http://www.cucei.udg.mx/sites/default/files/noticias/toma_de_protesta_0.jpg" href="http://www.cucei.udg.mx/sites/default/files/noticias/toma_de_protesta_0.jpg">
+			   	  <a href="http://static.panoramio.com/photos/original/12041861.jpg">
+				      <img class="imgAudiGal" src="http://www.comsoc.udg.mx/sites/default/files/styles/noticia/public/161004_inauguracion_saber_ingenieria_quimica_2016_galfonzo_3.jpg?itok=E9fw6V0E" href="http://www.comsoc.udg.mx/sites/default/files/styles/noticia/public/161004_inauguracion_saber_ingenieria_quimica_2016_galfonzo_3.jpg?itok=E9fw6V0E">
 				      <div class="caption">
 				        <h6>Asientos</h6>
 			    	</div>
@@ -104,7 +127,7 @@
 			<div>
 				<ul class="list-group">
 		  			<li class="list-group-item d-flex justify-content-between align-items-center">
-		 				Modems
+		  				Cañon
 		    			<span class="badge badge-primary badge-pill">1</span>
 		  			</li>
 		  			<li class="list-group-item d-flex justify-content-between align-items-center">
@@ -113,7 +136,7 @@
 					</li>
 		  			<li class="list-group-item d-flex justify-content-between align-items-center">
 		   			    Asientos
-		    	    	<span class="badge badge-primary badge-pill">80</span>
+		    	    	<span class="badge badge-primary badge-pill">200</span>
 		            </li>
 				</ul>
 			</div>
@@ -121,15 +144,15 @@
 				<ul class="list-group">
 		  			<li class="list-group-item d-flex justify-content-between align-items-center">
 		  				Mesas presidium
-		    			<span class="badge badge-primary badge-pill">1</span>
+		    			<span class="badge badge-primary badge-pill">2</span>
 		  			</li>
 		  			<li class="list-group-item d-flex justify-content-between align-items-center">
 						Microfonos
-						<span class="badge badge-primary badge-pill">2</span>
+						<span class="badge badge-primary badge-pill">3</span>
 					</li>
 		  			<li class="list-group-item d-flex justify-content-between align-items-center">
-		   			    Entradas
-		    	    	<span class="badge badge-primary badge-pill">1</span>
+		   			    Internet/modems
+		    	    	<span class="badge badge-primary badge-pill">2</span>
 		            </li>
 				</ul>
 			</div>
@@ -147,6 +170,5 @@
 	</div>
 
 
-	
-</body>
 
+</body>

@@ -1,3 +1,21 @@
+<?php
+include_once '../../app/conexion.inc.php';
+$titulo = "Landing page";
+Conexion::abrirConexion();
+$conexion = Conexion::obtenerConexion();
+$sql = "SELECT * FROM auditorio;";
+
+if(isset($conexion)) {
+        try {
+            $sentencia = $conexion->prepare($sql);
+            $sentencia->execute();
+            $auditorio = $sentencia->fetchAll();
+        } catch (PDOException $ex) {
+            print("ERROR: ".$ex->getMessage());
+        }
+}
+Conexion::cerrarConexion();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,8 +37,8 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-success">
 	<!-- Brand -->
 	<div class="container">
-		<a class="navbar-brand"  href="../landing-page/landing-page.html">ADMEV</a>
-		<a class="navbar-brand navbar-right"  href="#">CUCEI</a>
+		<a class="navbar-brand"  href="../landing-page/landing-page.php">ADMEV</a>
+		<a class="navbar-brand navbar-right"  href="http://www.cucei.udg.mx">CUCEI</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       	<span class="navbar-toggler-icon"></span>
       </button>
@@ -40,9 +58,14 @@
 						AUDITORIOS
 					</a>
 					<div class="dropdown-menu bg-light " >
-						<a class="dropdown-item" href="../auditorios/Auditorio.html">Matute Remus</a>
-						<a class="dropdown-item" href="#">Enrique Diaz</a>
-						<a class="dropdown-item" href="#">Link 3</a>
+                        <?php
+                            foreach ($auditorio as $row) {
+                                extract($row);
+                                $aux = explode(" ", $row['nombreAuditorio']);
+                                $aux = strtolower($aux[0]);
+                                echo "<a class='dropdown-item' href='../auditorios/".$aux.".php'>".$row['nombreAuditorio']."</a>";
+                            }
+                        ?>
 					</div>
 				</li>
 			</ul>
