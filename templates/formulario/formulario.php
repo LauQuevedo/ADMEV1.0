@@ -13,9 +13,25 @@ if(isset($conexion)) {
         } catch (PDOException $ex) {
             print("ERROR: ".$ex->getMessage());
         }
-    $sql = "SELECT * FROM ";
 }
 Conexion::cerrarConexion();
+if(isset($_POST['enviar'])) {
+    Conexion::abrirConexion();
+    $validador = new ValidadorEvento($_POST['nombre'], $_POST['email'], $_POST['clave'], $_POST['clave2'], Conexion::obtenerConexion());
+
+    if($validador->registro_valido()) {
+        $usuario = new Usuario('', $validador->obtener_nombre(),
+                                $validador->obtener_email(),
+                                password_hash($validador->obtener_clave(), PASSWORD_DEFAULT),
+                                 "", "");
+        $usuario_insertado = RepositorioUsuario::insertar_usuario(Conexion::obtenerConexion(), $usuario);
+
+        if($usuario_insertado) {
+            Redireccion::redirigir(RUTA_REGISTRO_CORECTO.'?nombre='.$usuario->getNombre());
+        }
+    }
+    Conexion::cerrarConexion();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

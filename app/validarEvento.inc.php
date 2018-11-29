@@ -85,7 +85,7 @@ class ValidadorEvento {
         }
         return "";
     }
-    private function validarNombres($conexion, $nombreS) {
+    private function validarNombreS($conexion, $nombreS) {
         if(!$this->variableInicializada($nombreS)) {
             return "Debes escribir un nombre del responsable.";
         } else {
@@ -114,7 +114,7 @@ class ValidadorEvento {
         }
         return "";
     }
-    private function validarCodigoRes($conexion, $codigoS) {
+    private function validarCodigoS($conexion, $codigoS) {
         if(!$this->variableInicializada($codigoS)) {
             return "Debes escribir un codigo del responsable.";
         } else {

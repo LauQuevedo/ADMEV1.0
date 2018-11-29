@@ -8,14 +8,23 @@
         <div>
             <label for="validation01">Nombres</label>
             <input type="text" class="form-control is-valid" id="validation01" mame="nombreR" placeholder="Juan Jose" value="" required>
+            <?php
+                $validador->mostrarErrorNombreR();
+            ?>
         </div>
         <div>
             <label for="validation01">Apellidos</label>
             <input type="text" class="form-control is-valid" id="validation01" name="apellidoR" placeholder="Perez Hernandez" value="" required>
+            <?php
+                $validador->mostrarErrorApellidoR();
+            ?>
         </div>
         <div>
             <label for="validation01">Codigo</label>
             <input type="text" class="form-control is-valid" id="validation01" name="codigoR" placeholder="12345" value="" required>
+            <?php
+                $validador->mostrarErrorCodigoR();
+            ?>
         </div>
         <div>
             <label for="validation01">Puesto</label>
@@ -38,14 +47,23 @@
         <div>
             <label for="validation01">Nombres</label>
             <input type="text" class="form-control is-valid" id="validation01" name="nombreS"placeholder="Carlos" value="" required>
+            <?php
+                $validador->mostrarErrorNombreS();
+            ?>
         </div>
         <div>
             <label for="validation01">Apellidos</label>
             <input type="text" class="form-control is-valid" id="validation01" name="apellidoS" placeholder="Lopez" value="" required>
+            <?php
+                $validador->mostrarErrorApellidoS();
+            ?>
         </div>
         <div>
             <label for="validation01">Codigo</label>
             <input type="text" class="form-control is-valid" id="validation01" name="codigoS" placeholder="Palacios" value="" required>
+            <?php
+                $validador->mostrarErrorCodigoS();
+            ?>
         </div>
         <div>
             <label for="validation01">Carrera</label>
