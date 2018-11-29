@@ -134,5 +134,41 @@ class ValidadorEvento {
         }
         return "";
     }
+    private function getNombreR() {
+        return $this->$nombreR;
+    }
+    private function getApellidoR() {
+        return $this->$apellidoR;
+    }
+    private function getCodigoR() {
+        return $this->$codigoR;
+    }
+    private function getNombreS() {
+        return $this->$nombreS;
+    }
+    private function getApellidoS() {
+        return $this->$apellidoS;
+    }
+    private function getCodigoS() {
+        return $this->$codigoS;
+    }
+    private function getErrorNombreR() {
+        return $this->$errorNombreRes;
+    }
+    private function getErrorApellidoR() {
+        return $this->$errorApellidoR;
+    }
+    private function getErrorCodigoR() {
+        return $this->$errorCodigoRes;
+    }
+    private function getErrorNombreS() {
+        return $this->$errorNombreSol;
+    }
+    private function getErrorApellidoS() {
+        return $this->$errorApellidoS;
+    }
+    private function getErrorCodigoS() {
+        return $this->$errorCodigoSol;
+    }
 }
 ?>
