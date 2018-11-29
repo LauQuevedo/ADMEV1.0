@@ -1,5 +1,5 @@
 <?php
-include_once '../../app/conexion.inc.php';
+include_once 'app/conexion.inc.php';
 $titulo = "Landing page";
 Conexion::abrirConexion();
 $conexion = Conexion::obtenerConexion();
@@ -22,8 +22,8 @@ Conexion::cerrarConexion();
 		<title>Admev | Principal</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="../../css/bootstrap.min.css">
-		<link rel="stylesheet" href="../../css/main.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/main.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
@@ -37,7 +37,7 @@ Conexion::cerrarConexion();
 <nav class="navbar navbar-expand-sm navbar-dark bg-success">
 	<!-- Brand -->
 	<div class="container">
-		<a class="navbar-brand"  href="../landing-page/landing-page.php">ADMEV</a>
+		<a class="navbar-brand"  href="index.php">ADMEV</a>
 		<a class="navbar-brand navbar-right"  href="http://www.cucei.udg.mx">CUCEI</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       	<span class="navbar-toggler-icon"></span>
@@ -46,10 +46,10 @@ Conexion::cerrarConexion();
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item active">
-					<a class="nav-link" href="../login/login.php">Log In</a>
+					<a class="nav-link" href="templates/login/login.php">Log In</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Solicitud</a>
+					<a class="nav-link" href="templates/formulario/formulario.php">Solicitud</a>
 				</li>
 
 				<!-- Dropdown -->
@@ -63,7 +63,7 @@ Conexion::cerrarConexion();
                                 extract($row);
                                 $aux = explode(" ", $row['nombreAuditorio']);
                                 $aux = strtolower($aux[0]);
-                                echo "<a class='dropdown-item' href='../auditorios/".$aux.".php'>".$row['nombreAuditorio']."</a>";
+                                echo "<a class='dropdown-item' href='templates/auditorios/".$aux.".php'>".$row['nombreAuditorio']."</a>";
                             }
                         ?>
 					</div>

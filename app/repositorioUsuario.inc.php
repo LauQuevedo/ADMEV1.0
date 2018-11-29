@@ -39,7 +39,7 @@ class RepositorioUsuario {
                     $usuario = new Usuario($resultado['idUsuario'],
                                             $resultado['nombreUsuario'],
                                             $resultado['contrasenaUsuario'],
-                                            $resultado['idPuestoUsario']);
+                                            $resultado['idPuestoUsuario']);
                 }
             } catch (PDOException $ex) {
                 print 'ERROR'.$ex->getMessage();

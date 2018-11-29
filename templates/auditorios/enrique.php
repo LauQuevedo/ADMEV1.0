@@ -32,15 +32,12 @@ Conexion::cerrarConexion();
 		<script src="jquery.bsPhotoGallery.js"></script>
 
 </head>
-
 <body>
-
 <!-- -------------------Barra de navegacion superior ------------------------->
-
 <nav class="navbar navbar-expand-sm navbar-dark bg-success">
 	<!-- Brand -->
 	<div class="container">
-		<a class="navbar-brand"  href="../landing-page/landing-page.php">ADMEV</a>
+		<a class="navbar-brand"  href="../../index.php">ADMEV</a>
 		<a class="navbar-brand navbar-right"  href="http://www.cucei.udg.mx">CUCEI</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       	<span class="navbar-toggler-icon"></span>
@@ -52,7 +49,7 @@ Conexion::cerrarConexion();
 					<a class="nav-link" href="../login/login.php">Log In</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Solicitud</a>
+					<a class="nav-link" href="../formulario/formulario.php">Solicitud</a>
 				</li>
 
 				<!-- Dropdown -->
@@ -121,9 +118,7 @@ Conexion::cerrarConexion();
 		  </div>
 		</div>
 <!---------------------------------Lista de equipamiento--------------------------------->
-
 		<div class="flex-container">
-
 			<div>
 				<ul class="list-group">
 		  			<li class="list-group-item d-flex justify-content-between align-items-center">
@@ -156,19 +151,11 @@ Conexion::cerrarConexion();
 		            </li>
 				</ul>
 			</div>
-
 		</div>
-
-
-
-
 	</div>
 <!---------------------------------Calendario--------------------------------->
 		<div>
 			<iframe src="https://calendar.google.com/calendar/b/1/embed?title=ADMEV&amp;showPrint=0&amp;mode=AGENDA&amp;height=400&amp;wkst=1&amp;bgcolor=%2399ff99&amp;src=54plri28kbvcvqisthdovtn4ps%40group.calendar.google.com&amp;color=%238D6F47&amp;src=es.mexican%23holiday%40group.v.calendar.google.com&amp;color=%23125A12&amp;ctz=America%2FMexico_City" style="border-width:0" width="600px" height="600px" frameborder="50" scrolling="no"></iframe>
 		</div>
 	</div>
-
-
-
 </body>

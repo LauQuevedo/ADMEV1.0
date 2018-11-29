@@ -67,3 +67,30 @@ CREATE TABLE archivos_solicitud (
     idEventoArchivosSol INT NOT NULL,
     PRIMARY KEY(idArchivosSolicitud)
 );
+
+CREATE TABLE solicitante (
+    idSolicitante INT NOT NULL,
+    nombreSolicitante VARCHAR(50) NOT NULL,
+    apellidoPSolicitante VARCHAR(50) NOT NULL,
+    apellidoMSolicitante VARCHAR(50) NOT NULL,
+    codigoSolicitante VARCHAR(10) NOT NULL,
+    carreraSolicitante VARCHAR(5),
+    PRIMARY KEY(idSolicitante)
+);
+
+CREATE TABLE responsable (
+    idResponsable INT NOT NULL,
+    nombreResponsable VARCHAR(50) NOT NULL,
+    apellidoPResponsable VARCHAR(50) NOT NULL,
+    apellidoMResponsable VARCHAR(50) NOT NULL,
+    codigoResponsable VARCHAR(10) NOT NULL,
+    puestoResponsable VARCHAR(20),
+    PRIMARY KEY(idResponsable)
+);
+
+CREATE TABLE solicitante_responsable (
+    idSolRes INT NOT NuLL,
+    idSolicitanteRes INT NOT NULL,
+    idResponsableSol INT NOT NULL,
+    PRIMARY KEY(idSolRes)
+);

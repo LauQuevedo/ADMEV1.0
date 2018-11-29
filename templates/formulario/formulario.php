@@ -1,6 +1,5 @@
 <?php
 include_once '../../app/conexion.inc.php';
-$titulo = "Landing page";
 Conexion::abrirConexion();
 $conexion = Conexion::obtenerConexion();
 $sql = "SELECT * FROM auditorio;";
@@ -13,6 +12,7 @@ if(isset($conexion)) {
         } catch (PDOException $ex) {
             print("ERROR: ".$ex->getMessage());
         }
+    $sql = "SELECT * FROM ";
 }
 Conexion::cerrarConexion();
 ?>
@@ -28,8 +28,6 @@ Conexion::cerrarConexion();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-
-
 </head>
 <body>
 <!-- -------------------Barra de navegacion superior ------------------------->
@@ -37,7 +35,7 @@ Conexion::cerrarConexion();
 <nav class="navbar navbar-expand-sm navbar-dark bg-success">
   <!-- Brand -->
     <div class="container">
-        <a class="navbar-brand"  href="../landing-page/landing-page.php">ADMEV</a>
+        <a class="navbar-brand"  href="../../index.php">ADMEV</a>
         <a class="navbar-brand navbar-right"  href="http://www.cucei.udg.mx">CUCEI</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -49,7 +47,7 @@ Conexion::cerrarConexion();
                     <a class="nav-link" href="../login/login.php">Log In</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../Formulario/Formulario.html">Solicitud</a>
+                    <a class="nav-link" href="../formulario/formulario.php">Solicitud</a>
                 </li>
                 <!-- Dropdown -->
                 <li class="nav-item dropdown">
